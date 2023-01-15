@@ -1,6 +1,5 @@
 package com.example.controller;
 
-
 import com.example.dto.ProductDto;
 import com.example.dto.StoreProductDto;
 import com.example.entity.Member;
@@ -26,8 +25,16 @@ public class MemberController {
         return memberRepository.findAll();
     }
 
-    @GetMapping("/members") @ResponseBody
-    public List<StoreProductDto> productList(){
-        return storeProductRepository.findAll().stream().map(StoreProductDto::fromEntity).collect(Collectors.toList());
+    @GetMapping("/stores") @ResponseBody
+    public List<StoreProduct> storeProductList(){
+        List<StoreProduct> storeProducts = storeProductRepository.findAll();
+
+        for(StoreProduct storeProduct : storeProducts){
+            System.out.println(storeProduct.getStore().toString());
+            System.out.println(storeProduct.getProduct().toString());
+        }
+
+      return storeProducts;
     }
+
 }

@@ -10,13 +10,24 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
+@NamedEntityGraph(name = "StoreWithProducts", attributeNodes = {@NamedAttributeNode("store"), @NamedAttributeNode("product")})
 public class StoreProduct {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @ManyToOne @JoinColumn(name = "store_id") private Store store;
+    @ManyToOne @JoinColumn(name = "store_id") Store store;
 
-    @ManyToOne @JoinColumn(name = "product_id") private Product product;
+    @ManyToOne @JoinColumn(name = "product_id") Product product;
+
+    private StoreProduct(Store store, Product product) {
+        this.store = store;
+        this.product = product;
+    }
+
+    protected StoreProduct() {}
+
+    public static StoreProduct of(Store store, Product product) {
+       return new StoreProduct(store, product);
+    }
 }

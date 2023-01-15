@@ -1,9 +1,11 @@
 package com.example;
 
 import com.example.entity.Member;
+import com.example.entity.Product;
+import com.example.entity.StoreProduct;
 import com.example.entity.Team;
+import com.example.entity.Store;
 import com.example.repo.*;
-import org.apache.catalina.Store;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -14,6 +16,9 @@ public class InitDataGenerator implements ApplicationRunner {
 
     @Autowired TeamRepository teamRepository;
     @Autowired MemberRepository memberRepository;
+    @Autowired StoreRepository storeRepository;
+    @Autowired ProductRepository productRepository;
+    @Autowired StoreProductRepository storeProductRepository;
 
     @Autowired StoreRepository storeRepository;
     @Autowired ProductRepository productRepository;

@@ -9,13 +9,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StoreProductDto {
+    private Long id;
     private StoreDto storeDto;
     private ProductDto productDto;
 
     public static StoreProductDto fromEntity(StoreProduct storeProduct) {
         return new StoreProductDto(
-            StoreDto.fromEntity(storeProduct.getStore()),
-            ProductDto.fromEntity(storeProduct.getProduct())
+                storeProduct.getId(),
+                StoreDto.fromEntity(storeProduct.getStore()),
+                ProductDto.fromEntity(storeProduct.getProduct())
         );
     }
 }
