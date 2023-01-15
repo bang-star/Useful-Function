@@ -30,7 +30,7 @@ public class Product {
         storeProduct.setProduct(this);
         this.storeProducts.add(storeProduct);
     }
-
+    
     public void addImage(Image image){
         image.setProduct(this);
         this.images.add(image);
